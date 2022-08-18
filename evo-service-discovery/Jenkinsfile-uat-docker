@@ -1,0 +1,48 @@
+#!/usr/bin/env groovy
+
+pipeline {
+
+	agent any
+
+	options { skipDefaultCheckout() }
+
+	stages {
+		stage('checkout') {
+			steps {
+				checkout scm
+			}
+		}
+
+		stage('check java') {
+			steps {
+				sh "java -version"
+			}
+		}
+		
+		stage('clean') {
+			steps {
+				sh "chmod +x mvnw"
+				sh "./mvnw clean"
+			}
+		}
+
+		stage('test') {
+        		steps {
+        			sh "./mvnw test"
+			}
+    		}
+		
+		stage('packaging') {
+			steps {
+				sh "./mvnw verify -Pprod -DskipTests"
+				archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
+			}
+		}
+
+	        stage('copy') {
+		  steps {
+			sh "cp ./target/evo-service-discovery-1.0-SNAPSHOT.jar /home/evo_java_traing/services/service-discovery"
+		  }
+		}
+	}
+}

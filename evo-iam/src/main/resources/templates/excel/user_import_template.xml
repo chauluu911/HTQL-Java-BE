@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<workbook>
+        <worksheet name="Sheet1">
+            <section startRow="0" endRow="0" />
+            <loop startRow="1" endRow="1" items="users" var="user" varType="com.evotek.iam.domain.command.UserImportCmd">
+                <section startRow="1" endRow="1">
+                    <mapping row="1" col="0">user.fullName</mapping>
+                    <mapping row="1" col="1">user.email</mapping>
+                    <mapping row="1" col="2">user.phoneNumber</mapping>
+                    <mapping row="1" col="3">user.description</mapping>
+                </section>
+                <loopbreakcondition>
+                    <rowcheck offset="0">
+                        <cellcheck offset="0" />
+                    </rowcheck>
+                </loopbreakcondition>
+            </loop>
+        </worksheet>
+</workbook>

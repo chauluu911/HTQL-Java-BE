@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.evotek.common.amqp.config.AmqpConfiguration

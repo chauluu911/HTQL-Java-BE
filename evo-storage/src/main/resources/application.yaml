@@ -1,0 +1,130 @@
+server:
+  port: ${PORT:80}
+  servlet:
+    context-path: ${SERVICE_PATH:/}
+
+spring:
+  swagger:
+    enabled: ${SWAGGER_ENABLED:false}
+  application:
+    name: storage
+  cloud:
+    compatibility-verifier:
+      enabled: ${COMPATIBILITY_VERIFIER_ENABLED:false}
+  profiles:
+    active: ${ENV:local}
+  servlet:
+    multipart:
+      max-file-size: ${MAX_FILE_SIZE:10485760}
+      max-request-size: ${MAX_REQUEST_SIZE:20485760}
+  thymeleaf:
+    cache: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  data:
+    redis:
+      repositories:
+        enabled: false
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      generate_statistics: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: ${POSTGRESQL_URI:}
+    username: ${POSTGRESQL_USER:}
+    password: ${POSTGRESQL_PASSWORD:}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:32}
+  sql:
+    init:
+    enabled: true
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:123456a@}
+    timeout: 15s
+  messages:
+    encoding: 'UTF-8'
+    use-code-as-default-message: true
+    cache-duration: 60 # 1 second, see the ISO 8601 standard
+    basename: i18n/messages
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60m
+    custom-cache:
+      user-authority:
+        time-to-live: 1m
+      client-token:
+        time-to-live: 5m
+      auth-login-fail-count:
+        time-to-live: 30m
+      auth-blocked-user:
+        time-to-live: 30m
+      invalid-access-token:
+        time-to-live: 60m
+      invalid-refresh-token:
+        time-to-live: 30d
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWK_URI:http://localhost:8586/api/certificate/.well-known/jwks.json}
+
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+feign:
+  circuitbreaker:
+    enabled: true
+minio:
+  access-key: ${MINIO_ACCESS_KEY:Evo_admin}
+  secret-key: ${MINIO_SECRET_KEY:1qazXSW@3edc}
+  endpoint: ${MINIO_ENDPOINT:http://192.168.2.100:9000}
+  bucket: ${MINIO_BUCKET:evotraning}
+
+app:
+  iam:
+    client:
+      authenticate-uri: /api/client/authenticate
+      client-id: 81e545f9-aaa8-4655-9392-1c9ff54d6ccc
+      client-secret: mD9XXTIJv6WfdPRPM6CKZQ03rT7iqrGoU3GvIhlYIgo5Mti1yXj1nIgJWSSvVTxgx4810zu6i8MT3kP8jespGG1Kif58ciwF841F
+  storage:
+    folder-upload: uploads
+    ios-app-file-path: apps/ios.ip
+    public-storage-url: http://192.168.101:8583/api/files
+    whitelist-mime-types:
+      - img/jpeg
+      - img/peg
+      - img/png
+      - img/PNG
+      - image/jpeg
+      - image/png
+      - image/PNG
+      - image/peg
+      - application/xhtml+xml
+      - application/xml
+      - application/json
+      - application/msword
+      - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+      - application/vnd.openxmlformats-officedocument.presentationml.presentation
+      - application/vnd.ms-powerpoint
+      - application/vnd.ms-excel
+      - application/msexcel
+      - application/vnd.openxmlformats-officedocument.wordprocessingml.document
+      - text/plain
+      - application/pdf

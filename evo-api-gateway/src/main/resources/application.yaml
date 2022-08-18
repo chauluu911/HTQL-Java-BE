@@ -1,0 +1,72 @@
+server:
+  port: ${PORT:80}
+  servlet:
+    context-path: ${SERVICE_PATH:/}
+
+spring:
+  application:
+    name: gateway
+  profiles:
+    active: ${ENV:local}
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  main:
+    web-application-type: reactive
+    allow-bean-definition-overriding: true
+  cloud:
+    compatibility-verifier:
+      enabled: false
+    gateway:
+      routes:
+        - id: iam
+          uri: lb://iam
+          predicates:
+            - Path=/iam/**
+          filters:
+            - StripPrefix=1
+        - id: storage
+          uri: lb://storage
+          predicates:
+            - Path=/storage/**
+          filters:
+            - StripPrefix=1
+        - id: system
+          uri: lb://system
+          predicates:
+            - Path=/system/**
+          filters:
+            - StripPrefix=1
+        - id: notification
+          uri: lb://notification
+          predicates:
+            - Path=/notification/**
+          filters:
+            - StripPrefix=1
+        - id: meet
+          uri: lb://meet
+          predicates:
+            - Path=/meet/**
+          filters:
+            - StripPrefix=1
+        - id: meeting
+          uri: lb://meeting
+          predicates:
+            - Path=/meeting/**
+          filters:
+            - StripPrefix=1
+        - id: order
+          uri: lb://order
+          predicates:
+            - Path=/order/**
+          filters:
+            - StripPrefix=1
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"

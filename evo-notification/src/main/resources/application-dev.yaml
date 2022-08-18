@@ -1,0 +1,70 @@
+server:
+  port: ${PORT:80}
+
+spring:
+  datasource:
+    url: ${ORACLE_URI:jdbc:postgresql://192.168.2.105:5435/evo_notification?currentSchema=evo_notification&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true}
+    username: ${POSTGRESQL_USER:evo_notification}
+    password: ${POSTGRESQL_PASSWORD:Evotek@1234}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:5}
+  swagger:
+    enabled: true
+  redis:
+    host: ${REDIS_HOST:192.168.2.105}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+    embedded: false
+    timeout: 10s
+  rabbitmq:
+    enabled: ${RABBITMQ_ENABLED:false}
+    host: ${RABBITMQ_HOST:192.168.2.100}
+    port: ${RABBITMQ_PORT:5671}
+    username: ${RABBITMQ_USER:admin}
+    password: ${RABBITMQ_PASSWORD:1qazXSW@3edc}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:mbamc}
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USER:evotraininghrm@gmail.com}
+    password: ${MAIL_PASSWORD:cubuxzweuajzyzwd}
+    protocol: ${MAIL_PROTOCOL:smtp}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWK_URI:http://192.168.2.100:8802/api/certificate/.well-known/jwks.json}
+
+firebase:
+  fcm-account-service-path: firebase/amc-fcm-dev.json
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:192.168.2.100}:${EUREKA_PORT:8861}/eureka/
+    config:
+      default:
+        loggerLevel: basic
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+
+app:
+  storage:
+    folder_temporary: /u01/jenkins/storage_amc/temporary
+
+bot:
+  username: evo_noti_bot
+  token: 5395675889:AAGUFZFnxW9pdKNHGfuwChXZwifPKgd4vPk

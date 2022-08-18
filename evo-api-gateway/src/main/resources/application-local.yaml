@@ -1,0 +1,18 @@
+server:
+  port: ${PORT:8520}
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:localhost}:${EUREKA_PORT:8561}/eureka/
+spring:
+  rabbitmq:
+    enabled: true
+    host: 192.168.2.100
+    port: 5671
+    username: admin
+    password: 1qazXSW@3edc
+    virtual-host: mbamc

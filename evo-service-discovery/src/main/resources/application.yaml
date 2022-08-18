@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: eureka-server
+  profiles:
+    active: ${ENV:local}
+  cloud:
+    compatibility-verifier:
+      enabled: false
+server:
+  port: 8561

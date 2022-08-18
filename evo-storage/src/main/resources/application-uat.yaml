@@ -1,0 +1,40 @@
+server:
+  port: 80
+
+spring:
+  datasource:
+    url: ${POSTGRES_URI:jdbc:postgresql://192.168.2.105:5435/evo_storage?currentSchema=evo_iam&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true}
+    username: ${POSTGRESQL_USER:evo_storage}
+    password: ${POSTGRESQL_PASSWORD:Evotek@1234}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:32}
+  redis:
+    host: ${REDIS_HOST:192.168.2.105}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+  rabbitmq:
+    enabled: ${RABBITMQ_ENABLED:false}
+    host: ${RABBITMQ_HOST:192.168.2.100}
+    port: ${RABBITMQ_PORT:5671}
+    username: ${RABBITMQ_USER:admin}
+    password: ${RABBITMQ_PASSWORD:1qazXSW@3edc}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:evotek}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWK_URI:http://192.168.2.100:8561/api/certificate/.well-known/jwks.json}
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:192.168.2.100}:${EUREKA_PORT:8561}/eureka/
+
+app:
+  storage:
+    folder-upload: ${STORAGE_PATH:/u01/jenkins/storage_amc/uploads}
+    ios-app-file-path: /u01/jenkins/storage_amc/uploads/apps/ios.ip
+    public-storage-url: ${PUBLIC_URI:http://192.168.2.100:8563/api/files}

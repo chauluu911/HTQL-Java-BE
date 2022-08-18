@@ -1,0 +1,15 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.evotek.common.webapp.security.CustomAuthenticationFilter, \
+com.evotek.common.webapp.security.HttpSecurityConfiguration, \
+com.evotek.common.webapp.security.RegexPermissionEvaluator, \
+com.evotek.common.webapp.security.impl.RemoteAuthorityService, \
+com.evotek.common.webapp.security.impl.TokenCacheServiceImpl, \
+com.evotek.common.webapp.security.ForbiddenTokenFilter, \
+com.evotek.common.webapp.exception.ExceptionHandleAdvice, \
+com.evotek.common.webapp.i18n.LocaleConfig, \
+com.evotek.common.webapp.i18n.impl.LocaleStringServiceImpl, \
+com.evotek.common.webapp.config.WebConfiguration, \
+com.evotek.common.webapp.config.StatsTracingFilter, \
+com.evotek.common.webapp.config.ActionLogFilter, \
+com.evotek.common.webapp.config.CustomWebDataBinderAdvice, \
+com.evotek.common.webapp.config.jackson.JacksonConfiguration

@@ -1,0 +1,111 @@
+server:
+  port: ${PORT:80}
+  servlet:
+    context-path: ${SERVICE_PATH:/}
+
+spring:
+  swagger:
+    enabled: ${SWAGGER_ENABLED:false}
+  application:
+    name: iam
+  profiles:
+    active: ${ENV:local}
+  thymeleaf:
+    cache: true
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: true
+      WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS: false
+  data:
+    redis:
+      repositories:
+        enabled: false
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      generate_statistics: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    url: ${POSTGRES_URI:jdbc:}
+    username: ${POSTGRES_USER:}
+    password: ${POSTGRES_PASSWORD:}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:32}
+  sql:
+    init:
+      enabled: true
+  redis:
+    host: ${REDIS_HOST:localhost}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:123456a@}
+    timeout: 15s
+  messages:
+    encoding: 'UTF-8'
+    use-code-as-default-message: true
+    cache-duration: 60 # 1 second, see the ISO 8601 standard
+    basename: i18n/messages
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60m
+    custom-cache:
+      user-authority:
+        time-to-live: 1m
+      client-token:
+        time-to-live: 5m
+      auth-login-fail-count:
+        time-to-live: 30m
+      auth-blocked-user:
+        time-to-live: 30m
+      invalid-access-token:
+        time-to-live: ${security.authentication.jwt.access-token-expires-in}
+      invalid-refresh-token:
+        time-to-live: ${security.authentication.jwt.refresh-token-expires-in}
+
+feign:
+  circuitbreaker:
+    enabled: true
+
+security:
+  authentication:
+    jwt:
+      key-store: evo.jks
+      key-store-password: 5tgbNHY^7ujm
+      key-alias: viz
+      access-token-expires-in: 1h
+      refresh-token-expires-in: 30d
+      email-token-expires-in: 10m
+
+app:
+  iam:
+    client:
+      authenticate-uri: /api/client/authenticate
+      client-id: af68fc34-991e-4621-9f9c-cc8418d42f75
+      client-secret: 7j3OxdpTPk3xx9HbjQ6qcDeCe5XwkGX4w2UgE78EAxykMTV1gwdGAED1d3PUJ2sDOvwAOJuyyti8dQNGSygXJ6YbiPBzsWIY7asU
+    deep-link-reset-password: evo://reset-password?token=%s
+    domain: https://api.evotek.vn
+  job:
+    sync-user-ldap:
+      time-cron: '0 0/5 * * * *'
+
+storage:
+  templateFileExcel: 'templates.excel'
+
+template:
+  user:
+    template-file: 'user_import_template.xml'
+    templateFileName: 'import_user'
+    templateFileExcel: 'templates/excel'
+
+

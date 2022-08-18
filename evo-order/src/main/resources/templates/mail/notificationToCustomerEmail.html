@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+</head>
+<body>
+<img th:src="'cid:' + ${logoContentId}"/>
+<p>Kính gửi quý khách hàng,</p>
+<p>
+    <span th:text="${titleContent}"></span>
+    <span> </span>
+    <strong th:text="${dateTime}"></strong>
+    <span> về việc:</span>
+</p>
+<p>"<strong th:text="${content}"></strong>"</p>
+<p>
+    <span>Rất cảm ơn quý khách đã gửi góp ý cho chúng tôi.</span>
+    <br/>
+    <span>Trân trọng, </span>
+    <br/>
+    <em>Ban Quản lý tòa nhà</em>
+</p>
+</body>
+</html>

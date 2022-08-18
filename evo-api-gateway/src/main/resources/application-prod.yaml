@@ -1,0 +1,10 @@
+server:
+  port: ${PORT:8520}
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:192.168.2.100}:${EUREKA_PORT:8561}/eureka/

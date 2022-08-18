@@ -1,0 +1,66 @@
+server:
+  port: 80
+
+spring:
+  datasource:
+    url: ${POSTGRES_URI:jdbc:postgresql://192.168.2.105:5435/evo_iam?currentSchema=evo_iam&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true}
+    username: ${POSTGRES_USER:evo_iam}
+    password: ${POSTGRES_PASSWORD:Evotek@1234}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:32}
+  redis:
+    host: ${REDIS_HOST:192.168.2.105}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+  rabbitmq:
+    enabled: ${RABBITMQ_ENABLED:false}
+    host: ${RABBITMQ_HOST:192.168.2.100}
+    port: ${RABBITMQ_PORT:5671}
+    username: ${RABBITMQ_USER:admin}
+    password: ${RABBITMQ_PASSWORD:1qazXSW@3edc}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:mbevo}
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USER:evo.building.mb@gmail.com}
+    password: ${MAIL_PASSWORD:123456aA@}
+    protocol: ${MAIL_PROTOCOL:smtp}
+    properties.mail.smtp:
+      auth: true
+      starttls.enable: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWK_URI:http://192.168.2.100:8061/api/certificate/.well-known/jwks.json}
+  ldap:
+    embedded:
+      base-dn: ${LDAP_BASE_DN:DC=evotek,DC=vn}
+      port: ${LDAP_PORT:389}
+      validation:
+        enabled: false
+    urls: ${LDAP_URLS:ldap://192.168.2.101:389}
+    username: vlands
+    password: 1qazXSW@
+    filtered-group:
+      enabled: ${LDAP_BASE_DN_GROUP_ENABLE:false}
+      base-dn-group: ${LDAP_BASE_DN_GROUP:cn=users,dc=evotek,dc=vn}
+      prefix: ${LDAP_BASE_DN_GROUP_PREFIX:evotek\}
+      groups:
+        - MBevo
+    base: CN=Users,DC=evotek,DC=vn
+    domain: evotek.vn
+
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:192.168.2.100}:${EUREKA_PORT:8762}/eureka/
+
+security:
+  authentication:
+    jwt:
+      access-token-expires-in: 60m

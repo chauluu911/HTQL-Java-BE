@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.evotek.common.kafka.config.KafkaAutoConfiguration, \
+com.evotek.common.kafka.config.KafkaTopicConfiguration

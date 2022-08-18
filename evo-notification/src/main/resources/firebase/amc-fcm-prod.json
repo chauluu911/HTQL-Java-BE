@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "evoteck-mb-amc",
+  "private_key_id": "879bd79e52a626856209e242b2139323333e6e4a",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCvxl8sAd80t3Eb\nKaInS1yh5tqfDQ7ihKv8ZAlyqgCUR0gac5wiO/o39mzYfjNVhrDpLjVGn7YYY/zc\nPDA9oz4zsvWv+An1YcABs4FQDtm5vGnlpreuE0BsPrLjTmUYOar3oRo74A64D23B\nvVWGDgjH8tjJxG5a2CADjDwc/VGfg7+Apm/ynhLIyCOPNlqRGB+1nFrd9XWa2m9d\ny6ECsY4zxLwV3uGJq6a0TaBNDR//eyndYH45ecsJelGLLVQXJ8nDGGrSmi2ZdyjM\nWRM7PtuQWedtudVG7Qtu+CrCYQDTPzZOqo3mwPSDpFXMCpVyfzNQGS8xvqjXrWmX\nn7Fxp+y1AgMBAAECggEAJGAmkOpgQT4XO5pNktkvNdga9SBULL9tAiHHrMGOtiDc\nRJEZRiJoYU1vcAwJ3pCtqsvjvZZOrlR+3yrbht3yAOvvmTd5BB1zCUcXIzS3jQ73\nUU3DpFQamGwPRCgUlsNUZMOjtLFlCmUy/w2KFeBwo8RXZcXvWoBwe5t5Uzx/OEXJ\nAgWnGFBMliVeLJqKoHlc8QVioUnBRzjOnpvxbRDN2eMurAzzV10EPr9EJO+li4r9\nic/0PuKgiZDtYCn8IFtbnaCmrRyZ7FoOXKG50YLjHqGSGxrUhwr0nP4W7BBD4vzs\n4w6BHQONJr7zUkQLY6zpyQqzpV37GBqcOMCe5nCufwKBgQDkTpD0OfpUQuhGxDeq\nyfvmj/0o8ZVGu6ITT36n0e+xIr/KkX8HidoR0LOUkkXuK09mrgnaRvPvKSk4FXAk\n5ZnHYXRgMey3LY/686gU5YJ4uCgsU0aOMM85h+4tIQEu41RLexYbFHAn9oXL9a34\n8W07xE1/o8ieIYonJlqE/ZHQFwKBgQDFGJIPVDH7pwyVBORBqElgDTzlyRI080iF\nI9/QtizJKwKmH6brjp12zkzprwXG544023vcqXx6rD1gJbC4krBQ8RvntlnX1tfP\ncjbXVV+U9XUOOmEqAGQZpkhUNbHuBO4BfKjvS9Lz02G3IA32nK3vxSsPfQSTpvU5\nrWa9sMA9EwKBgQDTmXHFubqmwABSHmhNtbjvn4KOoSGulhcIeMQ1vGDANym1EJbA\noOZpXpoiWFPSA3gq/aEKGnrZrbeTUGNI/zhAz7UxtvPjbqokeBHPlEwRoPUy59fb\nz6cwdiis0Qssruugrar2XEH6+ARX3hNpSDHqk+0UIPO+g+1sjaKV4gJz7wKBgQCl\ncKlxqofGKAN8tr1ui3cD5DjA3RWmUqwF7gX56GERf0Pa8+imA3ETf7m50cs0mbuZ\njL6ci7vMMPXX1etQEvljB/AXgM5LSbCfFc0I1UXFAICAL+rNWcSsbxJ5dRTkqUir\nANvA+dGaD04PbB2savnpsIQjnRoRYmynPHFoOowy9wKBgQDVfICEzSQPrJFCAR9c\nHmi8rNZYYgHBAe8NOuiVImlkdGfmcsUWNSVM/kg4cWEpSdvyrfWh2KWmZNgDMsfN\nmZubWB2IyueDWynK/fec2+TWzrFKGhhK1Mu/3UpIgZ7XWT/lJm9XtcvNrGcQzGT0\n7CK/SLj0UKjiuwvMJ7siyjNFyg==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-1y3mp@evoteck-mb-amc.iam.gserviceaccount.com",
+  "client_id": "117017980389104699354",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-1y3mp%40evoteck-mb-amc.iam.gserviceaccount.com"
+}

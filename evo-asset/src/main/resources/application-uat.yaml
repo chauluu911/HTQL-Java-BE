@@ -1,0 +1,34 @@
+server:
+  port: 80
+
+spring:
+  datasource:
+    url: ${POSTGRES_URI:jdbc:postgresql://192.168.2.105:5435/evo_asset?currentSchema=evo_order&useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true}
+    username: ${POSTGRES_USER:evo_asset}
+    password: ${POSTGRES_PASSWORD:Evotek@1234}
+    hikari:
+      maximum-pool-size: ${CONNECTION_POOL_SIZE:32}
+  redis:
+    host: ${REDIS_HOST:192.168.2.105}
+    port: ${REDIS_PORT:6379}
+    password: ${REDIS_PASSWORD:}
+  rabbitmq:
+    enabled: ${RABBITMQ_ENABLED:true}
+    host: ${RABBITMQ_HOST:192.168.2.100}
+    port: ${RABBITMQ_PORT:5671}
+    username: ${RABBITMQ_USER:admin}
+    password: ${RABBITMQ_PASSWORD:1qazXSW@3edc}
+    virtual-host: ${RABBITMQ_VIRTUAL_HOST:mbamc}
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: ${JWK_URI:http://192.168.2.100:8061/api/certificate/.well-known/jwks.json}
+
+eureka:
+  instance:
+    nonSecurePort: ${server.port}
+    secure-port-enabled: false
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:192.168.2.100}:${EUREKA_PORT:8762}/eureka/

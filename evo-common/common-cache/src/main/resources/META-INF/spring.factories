@@ -1,0 +1,3 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.evotek.common.cache.RedisCacheAutoConfiguration, \
+com.evotek.common.cache.embedded.EmbeddedRedisConfiguration

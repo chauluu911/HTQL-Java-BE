@@ -1,0 +1,10 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.evotek.common.ldapData.application.service.iml.UserLdapServiceIml, \
+com.evotek.common.ldapData.application.service.iml.GroupLdapServiceIml,\
+com.evotek.common.ldapData.application.config.LdapConnectionConfig,\
+com.evotek.common.ldapData.infrastructure.presistence.mapper.UserLdapEntryMapperImpl,\
+com.evotek.common.ldapData.infrastructure.presistence.mapper.GroupLdapEntryMapperImpl,\
+com.evotek.common.ldapData.infrastructure.presistence.mapper.AutoMapperImpl
+
+
+
